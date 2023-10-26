@@ -2,7 +2,7 @@ SRCS	=	megaphone.cpp
 
 OBJS	=	$(patsubst %.cpp, %.o, $(SRCS))
 
-CC	=	clang++
+CC	=	clang++ -Wall -Werror -Wextra
 
 NAME	=	megaphone
 
@@ -15,9 +15,9 @@ $(NAME):
 	$(CC) -c $< -o $@
 
 clean:
-	rm $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	@rm -f $(NAME)
 
 re:	fclean all

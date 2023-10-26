@@ -26,7 +26,7 @@ Contact::Contact(std::string firstName,
 		std::string favouriteMeal,
 		std::string underwearColor,
 		std::string darkestSecret
-) : firstName(firstName) , lastName(lastName), login(login), nickname(nickname), postalAddress(postalAddress), emailAddress(emailAddress), phoneNumber(phoneNumber), birthdayDate(birthdayDate), favouriteMeal(favouriteMeal), underwearColor(underwearColor), darkestSecret(darkestSecret)
+) : firstName(firstName) , lastName(lastName), nickname(nickname), login(login), postalAddress(postalAddress), emailAddress(emailAddress), phoneNumber(phoneNumber), birthdayDate(birthdayDate), favouriteMeal(favouriteMeal), underwearColor(underwearColor), darkestSecret(darkestSecret)
 {	
 }
 

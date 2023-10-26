@@ -2,7 +2,7 @@ SRCS	=	Contact.cpp main.cpp
 
 OBJS	=	$(patsubst %.cpp, %.o, $(SRCS))
 
-CC	=	clang++ -g
+CC	=	clang++ -g -Wall -Werror -Wextra
 
 NAME	=	phonebook
 
