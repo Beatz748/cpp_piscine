@@ -1,4 +1,4 @@
-SRCS	=	Zombie.cpp ZombieEvent.cpp main.cpp
+SRCS	=	Zombie.cpp ZombieHorde.cpp main.cpp
 
 OBJS	=	$(patsubst %.cpp, %.o, $(SRCS))
 
@@ -6,7 +6,7 @@ CC	=	clang++
 
 FLAGS	=	-Wall -Werror -Wextra
 
-NAME	=	Zombie
+NAME	=	Zombie2
 
 all:	$(NAME)
 
@@ -22,6 +22,4 @@ clean:
 fclean:	clean
 	rm -rf $(NAME)
 
-re:	fclean all
-
-
+re: fclean all

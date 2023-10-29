@@ -1,4 +1,4 @@
-SRCS	=	Zombie.cpp ZombieEvent.cpp main.cpp
+SRCS	=	Brain.cpp Human.cpp main.cpp
 
 OBJS	=	$(patsubst %.cpp, %.o, $(SRCS))
 
@@ -6,11 +6,11 @@ CC	=	clang++
 
 FLAGS	=	-Wall -Werror -Wextra
 
-NAME	=	Zombie
+NAME	=	Brain
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME):	$(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 %.o:	%.cpp
@@ -23,5 +23,3 @@ fclean:	clean
 	rm -rf $(NAME)
 
 re:	fclean all
-
-

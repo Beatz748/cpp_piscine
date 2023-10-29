@@ -1,4 +1,4 @@
-SRCS	=	Zombie.cpp ZombieEvent.cpp main.cpp
+SRCS	=	Weapon.cpp HumanA.cpp HumanB.cpp main.cpp
 
 OBJS	=	$(patsubst %.cpp, %.o, $(SRCS))
 
@@ -6,14 +6,14 @@ CC	=	clang++
 
 FLAGS	=	-Wall -Werror -Wextra
 
-NAME	=	Zombie
+NAME	=	attackers
 
 all:	$(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o:	%.cpp
+%.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
@@ -23,5 +23,3 @@ fclean:	clean
 	rm -rf $(NAME)
 
 re:	fclean all
-
-
