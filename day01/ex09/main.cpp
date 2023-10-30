@@ -3,5 +3,5 @@
 int	main()
 {
 	Logger logger("example");
-	logger.log("logToConsole", "Hello");
+	logger.log("logToFile", "Hello");
 }

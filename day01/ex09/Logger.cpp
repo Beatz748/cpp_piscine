@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#include <sys/_types/_time_t.h>
+#include <ctime>
 
 Logger::Logger(std::string const & filename) : _outputFilename(filename), _output(filename)
 {
@@ -28,11 +28,21 @@ void        Logger::logToFile(std::string const &msg)
 const std::string	Logger::makeLogEntry(std::string const & str) const
 {
 	std::stringstream	formatted;
-	std::chrono::system_clock::time_point t = std::chrono::system_clock::now();
-	std::time_t	current_time_t	=	std::chrono::system_clock::to_time_t(t);
 
-	formatted << "[ " << std::ctime(&current_time_t) << " ]" << std::endl;
-	formatted << str << std::endl;
+	std::time_t	current_time;
+	time(&current_time);
+
+	struct tm *timeinfo;
+	timeinfo = localtime(&current_time);
+
+	int	year = timeinfo->tm_year + 1900;
+	int	month = timeinfo->tm_mon + 1;
+	int	day = timeinfo->tm_mday;
+	int	hour = timeinfo->tm_hour;
+	int	minute = timeinfo->tm_min;
+	int	second = timeinfo->tm_sec;
+
+	formatted << "[ " << year << ":" << month << ":" << day << ":" << hour << ":" << minute << ":" << second << " ]" << "\n" << str << std::endl;
 
 	return (formatted.str());
 }
@@ -51,13 +61,13 @@ void			Logger::log(std::string const &dest, std::string const &str)
 		"logToFile"
 	};
 
-	std::string const formattedStr = makeLogEntry(str);
 
 	for (size_t i = 0; i < 2; ++i)
 	{
 		if (dest == actionName[i])
 		{
-			(this->*actions[i])(formattedStr);
+			(this->*actions[i])(str);
+			return;
 		}
 	}
 }
