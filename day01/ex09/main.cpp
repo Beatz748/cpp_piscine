@@ -1,9 +1,7 @@
-#include <fstream>
-#include <iostream>
+#include "Logger.hpp"
 
 int	main()
 {
-	std::ofstream	out;
-	out.open("ex");
-	out << "H" << std::endl;
+	Logger logger("example");
+	logger.log("logToConsole", "Hello");
 }
