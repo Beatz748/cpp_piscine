@@ -1,12 +1,12 @@
-SRCS	=	Logger.cpp main.cpp
+SRCS	=	main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	clang++
 
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=	-Wall -Werror -Wextra -g
 
-NAME	=	Logger
+NAME	=	cato9tails
 
 all:	$(NAME)
 
@@ -22,4 +22,4 @@ clean:
 fclean:	clean
 	rm -rf $(NAME)
 
-re:	fclean all
+re:	fclean	all
