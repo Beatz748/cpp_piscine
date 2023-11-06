@@ -4,7 +4,7 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	clang++
 
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=	-Wall -Werror -Wextra -fsanitize=address
 
 NAME	=	FR4G-TP
 

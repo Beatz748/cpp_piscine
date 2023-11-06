@@ -41,70 +41,144 @@ FragTrap	&FragTrap::operator=(const FragTrap &rhs)
 	return *this;
 }
 
+void		FragTrap::cyberAttack(std::string const & target) const
+{
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with cuber attack, causing: " << this->getRangedAtackDamage()
+		<< " points of damage!" << std::endl;
+}
+
+
+
+void		FragTrap::toiletAttack(std::string const & target) const
+{
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with toilet attack, causing: " << this->getRangedAtackDamage()
+		<< " points of damage!" << std::endl;
+}
+
+
+
+void		FragTrap::juiceAttack(std::string const & target) const
+{
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with apple-juice attack, causing: " << this->getRangedAtackDamage()
+		<< " points of damage!" << std::endl;
+}
+
+
+
+void		FragTrap::waterAttack(std::string const & target) const
+{
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with water attack, causing: " << this->getRangedAtackDamage()
+		<< " points of damage!" << std::endl;
+}
+
+
 
 void		FragTrap::rangedAttack(std::string const & target) const
 {
-	
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with ranged attack, causing: " << this->getRangedAtackDamage()
+		<< " points of damage!" << std::endl;
 }
 
 void		FragTrap::meleeAttack(std::string const & target) const
 {
-
+	std::cout << "FR4G-TP " << this->getName() << " attacks " << target \
+		<< " with melee attack, causing: " << this->getMeleeAtackDamage()
+		<< " points of damage!" << std::endl;
 }
 
-void		FragTrap::takeDamage(unsigned int amount)
+void		FragTrap::takeDamage(uint amount)
 {
+	uint	damage;
+	uint	armour;
+	uint	hitPoints = getHitPoints();
 
+
+	if (getHitPoints() == 0)
+	{
+		std::cout << "FR4G-TP " << getName() << " is already dead!"
+			<<std::endl;
+	}
+	armour = getArmourDamageReduction();
+	if (armour > amount)
+	{
+		std::cout << "FR4G-TP " << getName() << " has " << armour
+			<< " points of armour. Damage " << amount << " is ineffective for this";
+	}
+	damage = amount - armour;
+	if (damage < getHitPoints())
+	{
+		setHitPoints(hitPoints - damage);
+		std::cout << "FR4G-TP " << getName() << " damaged with " << damage
+			<< " points. Now he has " << getHitPoints() << "/"
+			<< getMaxHitPoints() << std::endl;
+	}
+	else
+	{
+		setHitPoints(0);
+		std::cout << "FR4G-TP " << getName() << " damaged with " << damage
+			<< " points. Now he has " << getHitPoints() << "/"
+			<< getMaxHitPoints() << " and he is dead" << std::endl;
+	}
 }
 
-void		FragTrap::beRepaired(unsigned int amount)
+void		FragTrap::beRepaired(uint amount)
 {
+	uint	hp = getHitPoints();
+	uint	repairedHp = (getMaxHitPoints() > hp + amount ? getMaxHitPoints() : hp + amount);
 
+	std::cout << "FR4G-TP " << getName() << " has repaired "
+		<< amount << " points and now " << repairedHp
+		<< "/" << getMaxHitPoints() << std::endl;
 }
 
 
-unsigned int	FragTrap::getHitPoints() const
+uint	FragTrap::getHitPoints() const
 {
-
+	return _hitPoints;
 }
 
-unsigned int	FragTrap::getMaxHitPoints() const
+uint	FragTrap::getMaxHitPoints() const
 {
-
+	return _maxHitPoints;
 }
 
-unsigned int	FragTrap::getEnergyPoints() const
+uint	FragTrap::getEnergyPoints() const
 {
-
+	return _energyPoints;
 }
 
-unsigned int	FragTrap::getLvl() const
+uint	FragTrap::getLvl() const
 {
-
+	return _lvl;
 }
 
-unsigned int	FragTrap::getName() const
+std::string	FragTrap::getName() const
 {
-
+	return _name;
 }
 
-unsigned int	FragTrap::getMeleeAtackDamage() const
+uint		FragTrap::getMeleeAtackDamage() const
 {
-
+	return _meleeAttackDamage;
 }
 
-unsigned int	FragTrap::getRangedAtackDamage() const
+uint		FragTrap::getRangedAtackDamage() const
 {
-
+	return _rangedAttackDamage;
 }
 
-unsigned int	FragTrap::getArmourDamageReduction() const
+uint		FragTrap::getArmourDamageReduction() const
 {
-
+	return _armourDamageReduction;
 }
 
 
-void		FragTrap::setHitPoints(unsigned int hitPoints)
+void		FragTrap::setHitPoints(uint hitPoints)
 {
 	if (hitPoints > _maxHitPoints)
 		_hitPoints = _maxHitPoints;
@@ -112,12 +186,12 @@ void		FragTrap::setHitPoints(unsigned int hitPoints)
 		_hitPoints = hitPoints;
 }
 
-void		FragTrap::setMaxHitPoints(unsigned int maxHitPoints)
+void		FragTrap::setMaxHitPoints(uint maxHitPoints)
 {
 	_maxHitPoints = maxHitPoints;
 }
          
-void		FragTrap::setEnergyPoints(unsigned int energyPoints)
+void		FragTrap::setEnergyPoints(uint energyPoints)
 {
 	if (energyPoints > _maxEnergyPoints)
 		_energyPoints = _maxEnergyPoints;
@@ -125,13 +199,13 @@ void		FragTrap::setEnergyPoints(unsigned int energyPoints)
 		_energyPoints = energyPoints;
 }
 
-void		FragTrap::setMaxEnergyPoints(unsigned int maxEnergyPoints)
+void		FragTrap::setMaxEnergyPoints(uint maxEnergyPoints)
 {
 	_maxEnergyPoints = maxEnergyPoints;
 }
 
 
-void		FragTrap::setLvl(unsigned int lvl)
+void		FragTrap::setLvl(uint lvl)
 {
 	_lvl = lvl;
 }
@@ -141,17 +215,17 @@ void		FragTrap::setName(std::string name)
 	_name = name;
 }
 
-void		FragTrap::setMeleeAtackDamage(unsigned int meleeAttack)
+void		FragTrap::setMeleeAtackDamage(uint meleeAttack)
 {
 	_meleeAttackDamage = meleeAttack;
 }
 
-void		FragTrap::setRangedAtackDamage(unsigned int rangedAttack)
+void		FragTrap::setRangedAtackDamage(uint rangedAttack)
 {
 	_rangedAttackDamage = rangedAttack;
 }
 
-void		FragTrap::setArmourDamageReduction(unsigned int armour)
+void		FragTrap::setArmourDamageReduction(uint armour)
 {
 	_armourDamageReduction = armour;
 }
@@ -159,6 +233,39 @@ void		FragTrap::setArmourDamageReduction(unsigned int armour)
 
 void		FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
-	
+	uint	ep = getEnergyPoints();
+	if (ep < 25)
+	{
+		std::cout << "Only " << ep
+			<< " points of energy. Not enought for vaulthunter_dot_exe"
+			<< std::endl;
+		return;
+	}
+	setEnergyPoints(ep - 25);
+
+	void	(FragTrap::*actions[5])(std::string const &) const =
+	{
+		&FragTrap::rangedAttack,
+		&FragTrap::toiletAttack,
+		&FragTrap::waterAttack,
+		&FragTrap::juiceAttack,
+		&FragTrap::meleeAttack
+	};
+
+	srand(time(0));
+	int	index = rand() % 5;
+
+	std::string const	randomAttacks[5] = 
+	{
+		"ranged",
+		"toilet",
+		"water",
+		"juice",
+		"melee"
+	};
+
+	std::cout << "random attack: " << randomAttacks[index] << std::endl;
+
+	(this->*actions[index])(target);
 }
 
