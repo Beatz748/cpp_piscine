@@ -29,7 +29,17 @@ Sorcerer::Sorcerer(const Sorcerer &rhs)
 
 void	Sorcerer::polymorph(const Victim &vic) const
 {
+	vic.getPolymorphed();
+}
 
+const std::string	&Sorcerer::getName() const
+{
+	return _name;
+}
+
+const std::string	&Sorcerer::getTitle() const
+{
+	return _title;
 }
 
 std::ostream&	operator<<(std::ostream &out, const Sorcerer &sor)

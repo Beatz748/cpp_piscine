@@ -7,11 +7,23 @@ Victim::Victim(const std::string &name) : _name(name)
 		<< std::endl;
 }
 
+Victim::Victim(const Victim &rhs)
+{
+	*this = rhs;
+}
+
 Victim::~Victim()
 {
 	std::cout << "Victim " << getName()
 		<< " just died for no apparent reason !"
 		<< std::endl;
+}
+
+Victim	&Victim::operator=(const Victim &rhs)
+{
+	_name = rhs.getName();
+
+	return *this;
 }
 
 void	Victim::getPolymorphed()	const
@@ -26,4 +38,9 @@ std::ostream&	operator<<(std::ostream &out, const Victim &vic)
 		<< " and I like otters !"
 		<< std::endl;
 	return out;
+}
+
+const std::string	&Victim::getName() const
+{
+	return _name;
 }
