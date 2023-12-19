@@ -6,11 +6,12 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	clang++
 
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=	-Wall -Werror -Wextra -std=c++14 -g
 
 NAME	=	game
 
 all:	$(NAME)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(NAME):	$(OBJS)
 
