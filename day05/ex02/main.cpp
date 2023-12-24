@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
@@ -11,10 +13,16 @@ int main()
 	{	
 		Form	f2("school", 1, 150);
 		ShrubberyCreationForm	shrub("Vinx");
+		PresidentialPardonForm	president("Carl");
+		RobotomyRequestForm	robot("Merc");
+
+		bur1.signForm(president);
+		bur1.signForm(robot);
 		bur1.signForm(shrub);
+		robot.execute(bur1);
+		president.execute(bur1);
 		shrub.execute(bur1);
 		bur1.signForm(f1);
-//		bur2.signForm(f1);
 	}
 	catch(const std::exception& e)
 	{
