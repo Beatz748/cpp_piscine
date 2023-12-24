@@ -19,7 +19,10 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &rhs);
 		~Bureaucrat();
 		Bureaucrat &operator=(const Bureaucrat &rhs);
+
 		void			signForm(Form &form) const;
+		void			executeForm(const Form &form) const;
+
 		int			getGrade() const;
 		const std::string	&getName() const;
 		void			incGrade();

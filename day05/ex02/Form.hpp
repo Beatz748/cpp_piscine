@@ -28,7 +28,7 @@ class Form
 		int			getSignGrade() const;
 		bool			getStatus() const;
 		void			beSigned(const Bureaucrat &bur);
-//		virtual void		execute(const Bureaucrat & executor) const;
+		virtual void		execute(const Bureaucrat & executor) const;
 
 		class GradeTooLowException : public std::exception
 		{

@@ -1,4 +1,4 @@
-SRCS	=	Bureaucrat.cpp  Form.cpp ShrubberyCreationForm.cpp \
+SRCS	=	Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp \
 		PresidentialPardonForm.cpp RobotomyRequestForm.cpp \
 		main.cpp
 

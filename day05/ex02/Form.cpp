@@ -56,6 +56,12 @@ void			Form::beSigned(const Bureaucrat &bur)
 	this->_signed = true;
 }
 
+void			Form::execute(const Bureaucrat &executor) const
+{
+	std::cout << "Form executed by " << executor.getName()
+		<< "\n";
+}
+
 std::ostream	&operator<<(std::ostream &out, const Form &form)
 {
 	const std::string	formName = form.getName();

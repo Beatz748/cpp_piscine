@@ -18,7 +18,7 @@ public:
 	~PresidentialPardonForm();
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
 		/* Implementation */
-	void	execute(const Bureaucrat & executor) const;
+	void	execute(const Bureaucrat & executor) const override;
 		/* Exceptions */
 	
 };
