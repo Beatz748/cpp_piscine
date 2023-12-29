@@ -1,12 +1,12 @@
-SRCS	=	Sorcerer.cpp Victim.cpp Peon.cpp main.cpp
+SRCS	=	Converter.cpp main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 
 CC	=	clang++
 
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=#	-Wall -Werror -Wextra
 
-NAME	=	polymorph
+NAME	=	convert
 
 all:	$(NAME)
 
@@ -17,9 +17,9 @@ $(NAME):	$(OBJS)
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	rm $(OBJS)
 
-fclean:	clean
-	rm -rf $(NAME)
+fclean: clean
+	rm $(NAME)
 
 re:	fclean all
