@@ -1,0 +1,25 @@
+SRCS	=	whatever.cpp
+
+OBJS	=	$(SRCS:.cpp=.o)
+
+CC	=	clang++
+
+FLAGS	=	-Wall -Werror -Wextra
+
+NAME	=	whatever
+
+all:	$(NAME)
+
+$(NAME):	$(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+
+%.o:	%.cpp
+	$(CC) $(FLAGS) -c $< -o $@
+
+clean:
+	rm $(OBJS)
+
+fclean:	clean
+	rm $(NAME)
+
+re:	fclean all 
